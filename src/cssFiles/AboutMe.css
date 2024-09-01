@@ -16,22 +16,21 @@
 
 section {
     box-sizing: border-box;
-    padding: 2rem;
+    padding: 10px;
     max-width: 800px;
 }
 
 .about-me, .website-purpose {
     border-radius: 5px;
     box-shadow: 0 0 10px #012b20;
-    margin: 1rem;
+    margin: 10px;
     background-color: #527a6d;
-    min-height: fit-content;
 }
 
 h2 {
     border-bottom: 2px solid #333333;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
     margin-top: 0px;
     color: #013426;
 }
