@@ -70,6 +70,11 @@ return (
 			<td>{calculation.monthlyAmountAfterAddPercentage}</td>
 		</tr>
 		}
+		<tr className='blocker-up'>
+			<td>הסכום המצטבר שנשאר</td>
+			<td>--</td>
+			<td>{calculation.totalAmountEnd}</td>
+		</tr>
 	</table>
 </div>
 );

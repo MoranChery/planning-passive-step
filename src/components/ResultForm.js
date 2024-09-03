@@ -46,6 +46,9 @@ const ResultForm = ({ formData }) => {
             let totalAfterAddPercentageFormat = "";
             let monthlyAmountAfterAddPercentageFormat ="";
 
+            let totalAmountEnd = totalWithProfit -partialWithdrawalAmount ;
+            let totalAmountEndFormat = numberWithCommas((Math.round(totalAmountEnd * 100) / 100).toString());
+
             if(parseInt(formData.addPercentage, 10) > 0){
                 setHasAddPercentage(true);
                 let addPercentageAmount = totalAfterTax * parseInt(formData.addPercentage, 10)/100;
@@ -68,6 +71,7 @@ const ResultForm = ({ formData }) => {
                 totalAfterTax: totalAfterTaxFormat,
                 partialWithdrawalAmount: partialWithdrawalAmountFormat,
                 monthlyAmount: monthlyAmountFormat,
+                totalAmountEnd: totalAmountEndFormat,
                 addPercentageAmount: addPercentageAmountFormat,
                 totalAfterAddPercentage: totalAfterAddPercentageFormat,
                 monthlyAmountAfterAddPercentage: monthlyAmountAfterAddPercentageFormat
