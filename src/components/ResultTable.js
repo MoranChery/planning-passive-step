@@ -40,7 +40,7 @@ return (
 			<td>{calculation.taxAmount}</td>
 		</tr>
 		<tr>
-			<td>הרווח אחרי הורדת מיסים ואינפלציה</td>
+			<td>הרווח אחרי הורדת מיסים</td>
 			<td>--</td>
 			<td>{calculation.totalAfterTax}</td>
 		</tr>

@@ -49,6 +49,9 @@ const FormExplain = ({formData,formDataPrint, calculation, hasAddPercentage}) =>
                 </label>
             </div>
             }
+            <label>הסכום שנישאר בחסכון, אותו ניתן להפקיד שוב ל-{formData.years} שנים הבאות:
+                <span className='spanCss'> {calculation.totalAmountEnd} </span>ש״ח.
+            </label>
         </div>
     )
 }
