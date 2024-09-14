@@ -17,13 +17,13 @@ function App() {
 
   return (
     <div className="App">
-      <div class="sidenav">
-        <AboutMe></AboutMe>
-      </div>
       <header className="App-header">
         <p> תכנון הצעד הפסיבי </p>
         <img src={logo} className="App-logo" alt="logo" />
       </header>
+      <div class="sidenav">
+        <AboutMe></AboutMe>
+      </div>
       <body>
         <PlanningForm onSubmit={handleSubmit} />
         <ResultForm formData={formData}></ResultForm>

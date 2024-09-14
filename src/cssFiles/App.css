@@ -37,12 +37,19 @@ body{
   gap: 15px;
 }
 
+
+@media screen and (min-width: 1480px) {
+  .sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 20%; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    top: 0; /* Stay at the top */
+    left: 0;
+    border: 1px solid #ccc;
+  }
+}
+
 .sidenav {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 20%; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  top: 0; /* Stay at the top */
-  left: 0;
-  border: 1px solid #ccc;
+  
   direction: rtl;
 }
