@@ -50,6 +50,7 @@
     margin-top: 30px;
     justify-content: space-between;
     display: flex;
+    direction: ltr;
   }
   
   button {
