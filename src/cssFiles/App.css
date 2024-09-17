@@ -1,9 +1,9 @@
 
 @media screen and (max-width: 1480px) {
-.app {
-  display: inline-grid;
-  overflow-x: scroll;
-}
+  .app {
+    display: inline-grid;
+    overflow-x: scroll;
+  }
 }
 
 .App-logo {
