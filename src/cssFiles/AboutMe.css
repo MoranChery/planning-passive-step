@@ -1,5 +1,4 @@
-.web-data-label,
-.my-data {
+.web-data-label, .my-data {
     font-size: 18px;
     color: #012b20
 }
@@ -7,6 +6,7 @@
 .web-data{
     padding-top: 5%;
 }
+
 @media screen and (min-width: 1480px) {
     .info-data{
         align-items: center;
