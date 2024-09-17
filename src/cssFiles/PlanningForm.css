@@ -9,6 +9,7 @@
 
   .field {
     height: 70px;
+    direction: ltr;
   }
 
   .form-group {

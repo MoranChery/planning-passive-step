@@ -1,4 +1,9 @@
 
+.app {
+  display: inline-grid;
+  overflow-x: scroll;
+}
+
 .App-logo {
   height: 5vmin;
   animation: colorTransition 10s linear infinite;
@@ -29,13 +34,15 @@
   font-size: calc(10px + 2vmin);
   color: white;
   padding-right: 2%;
+  direction: ltr;
 }
 
 body{
   padding-right: 2%;
-  display: flex;
-  flex-direction: row-reverse;
+  display: inline-flex;
+  flex-direction: row;
   gap: 15px;
+  direction: rtl;
 }
 
 

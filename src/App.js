@@ -15,7 +15,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="app">
       <header className="App-header">
         <p> תכנון הצעד הפסיבי </p>
         <img src={logo} className="App-logo" alt="logo" />
