@@ -11,7 +11,6 @@ function App() {
   const [formData, setFormData] = useState({}); 
 
   const handleSubmit = (data) => {
-    console.log('Form data submitted:', data);
     setFormData(data);
   };
 
