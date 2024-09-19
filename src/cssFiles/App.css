@@ -67,6 +67,7 @@ body{
   }
   .nav-links {
     padding-left: 20%;
+    position: absolute;
   }
 }
 
@@ -75,7 +76,6 @@ body{
 }
 
 .nav-links {
-  position: absolute;
   left: 0;
   margin-left: 2%;
   display: flex;
