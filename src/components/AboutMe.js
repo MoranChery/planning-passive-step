@@ -3,7 +3,7 @@ import '../cssFiles/AboutMe.css';
 const AboutMe = () => {
     return (
         <div className='info-data'>
-            <section class="about-me">
+            <section className="about-me">
                 <h2>קצת עלי:</h2>
                 <ul className='my-list'>
                     <li><strong>שמי:</strong> מורן צ׳רי</li>
@@ -13,7 +13,7 @@ const AboutMe = () => {
                 </ul>
             </section>
 
-            <section class="website-purpose">
+            <section className="website-purpose">
                 <h2>מטרת האתר:</h2>
                 <p>בהשראת לימודי התואר השני, הקמתי אתר ייחודי המחשב את השפעת ריבית דריבית.</p>
                 <p className='main-functions'>פונקציות עיקריות:</p>

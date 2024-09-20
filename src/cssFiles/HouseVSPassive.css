@@ -1,0 +1,7 @@
+.form-body{
+    padding-right: 2%;
+    display: inline-flex;
+    flex-direction: row;
+    gap: 15px;
+    direction: rtl;
+  }

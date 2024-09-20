@@ -11,7 +11,7 @@ const MainCalculator = () => {
   };
 
     return (
-        <div class="form-body">
+        <div className="form-body">
             <PlanningForm onSubmit={handleSubmit} />
             <ResultForm formData={formData}></ResultForm>
         </div>

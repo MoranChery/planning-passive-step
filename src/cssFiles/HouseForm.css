@@ -1,0 +1,17 @@
+.house-form {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: right;
+    width: 500px;
+}
+
+.field-house {
+    height: 70px;
+    direction: ltr;
+}
+
+.title {
+    color: aqua;
+    font-size: 20px;
+}

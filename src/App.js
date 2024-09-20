@@ -30,7 +30,7 @@ function App() {
           <p> תכנון הצעד הפסיבי </p>
           <img src={logo} className="App-logo" alt="logo" />
         </header>
-        <div class="sidenav">
+        <div className="sidenav">
           <AboutMe></AboutMe>
         </div>
         <Routes>
