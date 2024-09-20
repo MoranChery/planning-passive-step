@@ -12,7 +12,7 @@ const PassiveForm = ({setData}) => {
 
     return (
     <div>
-        <p>2 משהו כאן </p>
+        <p className='title'>השקעה פסיבית:</p>
     </div>    
     );
 };
