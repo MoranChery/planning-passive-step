@@ -5,9 +5,11 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
-import MainCalculator from "./components/MainCalculator";
+
 import './cssFiles/App.css';
 import AboutMe from './components/AboutMe.js';
+import MainCalculator from "./components/MainCalculator";
+import HouseVSPassive from "./components/HouseVSPassive";
 
 
 function App() {
@@ -22,12 +24,11 @@ function App() {
               <NavLink className='nav-link' to="/">מחשבון עיקרי</NavLink>
             </div>
             <div >
-              <NavLink className='nav-link' to="/about">השקעה פסיבית VS. דירה להשקעה</NavLink>
+              <NavLink className='nav-link' to="/houseVSpassive">השקעה פסיבית VS. דירה להשקעה</NavLink>
             </div>
           </div>
           <p> תכנון הצעד הפסיבי </p>
           <img src={logo} className="App-logo" alt="logo" />
-
         </header>
         <div class="sidenav">
           <AboutMe></AboutMe>
@@ -37,6 +38,11 @@ function App() {
             exact
             path="/"
             element={<MainCalculator />}
+          />
+          <Route
+            exact
+            path="/houseVSpassive"
+            element={<HouseVSPassive />}
           />
         </Routes>
       </BrowserRouter>
