@@ -3,16 +3,13 @@ import React, { useState } from 'react';
 
 
 
-const PassiveForm = ({ data }) => {
+const PassiveForm = ({ data, setPassiveDataForm }) => {
 
     const [checked, setChecked] = React.useState(false);
     const [formData, setFormData] = useState({
-        initialAmount: '100000',
-        profitPercentage: '5',
-        years: '5',
-        addPercentage: '10',
-        taxPercentage: '25',
-        partialWithdrawalPercentage: '90',
+        initialAmount: data.initialAmount,
+        profitPercentage: data.profitPercentage,
+        taxPercentage: data.taxPercentage
     });
 
     const [errors, setErrors] = useState({});
@@ -21,16 +18,23 @@ const PassiveForm = ({ data }) => {
         if (!checked) {
             setErrors({ ...errors, profitPercentage: "" })
         }
-        setFormData({ ...formData, profitPercentage: "5" });
+        let dataForm = {
+            ...formData,
+            profitPercentage: 5
+        };
+        setFormData(dataForm);
+        setPassiveDataForm(dataForm);
         setChecked(!checked);
     };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
+        let dataForm = {
             ...formData,
             [name]: value,
-        });
+        };
+        setFormData(dataForm)
+        setPassiveDataForm(dataForm);
     };
 
     return (
@@ -62,6 +66,20 @@ const PassiveForm = ({ data }) => {
                         </label>
                     </div>
                     {errors.profitPercentage && <p className="error">{errors.profitPercentage}</p>}
+                </div>
+                <div className='field'>
+                    <div className="form-group">
+                        <label className="inputClass" htmlFor="taxPercentage">אחוז מס צפוי:</label>
+                        <input
+                            type="text"
+                            id="taxPercentage"
+                            name="taxPercentage"
+                            value={formData.taxPercentage}
+                            onChange={handleChange}
+                            placeholder="Fixed number or x.y%"
+                        />
+                    </div>
+                    {errors.taxPercentage && <p className="error">{errors.taxPercentage}</p>}
                 </div>
             </div>
 
