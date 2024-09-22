@@ -6,23 +6,54 @@ import HouseForm from "../components/HouseForm";
 import PassiveForm from "../components/PassiveForm";
 
 const HouseVSPassive = () => {
-    const [homeData, setHomeData] = useState({});
-    const [passiveData, setPassiveData] = useState({});
-    const homeDataChange = (data) => {
-        let equity = homeData.equity;
+    const [data, setData] = useState(
+        {
+            initialAmount: 150000,
+            monthlyRepaymentAmount: 4000,
+            monthlyRentalAmount: 4000,
+            expectChangeRentYear: 3,
+            monthlyRepaymentPeriodYears: 20,
+            profitPercentage: 5,
+            taxPercentage: 25
+        }
+    );
+
+    const [passiveData, setPassiveData] = useState(
+        {
+            initialAmount: 150000,
+            profitPercentage: 5,
+            taxPercentage: 25
+        }
+    );
+
+    const homeDataChange = (homeDataForm) => {
         let dataChnage = {
-            ...passiveData,
-            ["initialAmount"]: equity,
+            ...data,
+            initialAmount: homeDataForm.equity,
+            monthlyRepaymentAmount: homeDataForm.monthlyRepaymentAmount,
+            monthlyRentalAmount: homeDataForm.monthlyRentalAmount,
+            expectChangeRentYear: homeDataForm.expectChangeRentYear,
+            monthlyRepaymentPeriodYears: homeDataForm.monthlyRepaymentPeriodYears
         };
-        setPassiveData(dataChnage);
-        setHomeData(data);
+
+        let passiveDataChange = {
+            ...passiveData,
+            initialAmount: homeDataForm.equity
+        };
+
+        setData(dataChnage);
+        setPassiveData(passiveDataChange);
+    };
+
+    const setPassiveDataForm = (passiveDataForm) => {
+
     };
 
     return (
-    <div className="form-body">
-        <HouseForm setData={homeDataChange}></HouseForm>
-        <PassiveForm data={passiveData} ></PassiveForm>
-    </div>    
+        <div className="form-body">
+            <HouseForm setData={homeDataChange}></HouseForm>
+            <PassiveForm data={passiveData} setPassiveDataForm={setPassiveDataForm}  ></PassiveForm>
+        </div>
     );
 };
 
