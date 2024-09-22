@@ -31,12 +31,13 @@
     
   }
   input[type="checkbox"] {
-    margin-right: 24%;
+    margin-right: 27%;
   }
 
   .checkboxLabel {
     font-size: 0.9em;
   }
+
   input[type="number"],
   input[type="text"],
   select {
