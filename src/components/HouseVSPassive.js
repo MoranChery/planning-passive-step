@@ -16,19 +16,12 @@ const HouseVSPassive = () => {
         };
         setPassiveData(dataChnage);
         setHomeData(data);
-
-        console.log("homeData:", data);
-    };
-
-    const passiveDataChange = (data) => {
-        console.log("passiveData:", data);
-        setPassiveData(data);
     };
 
     return (
     <div className="form-body">
         <HouseForm setData={homeDataChange}></HouseForm>
-        <PassiveForm setData={passiveDataChange} ></PassiveForm>
+        <PassiveForm data={passiveData} ></PassiveForm>
     </div>    
     );
 };
