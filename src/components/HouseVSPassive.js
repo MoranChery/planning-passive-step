@@ -46,7 +46,7 @@ const HouseVSPassive = () => {
     };
 
     const setPassiveDataForm = (passiveDataForm) => {
-
+        
     };
 
     return (
