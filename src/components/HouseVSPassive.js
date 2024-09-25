@@ -22,7 +22,8 @@ const HouseVSPassive = () => {
         {
             initialAmount: 150000,
             profitPercentage: 5,
-            taxPercentage: 25
+            taxPercentage: 25,
+            monthlyDeposit : 0
         }
     );
 
@@ -38,7 +39,8 @@ const HouseVSPassive = () => {
 
         let passiveDataChange = {
             ...passiveData,
-            initialAmount: homeDataForm.equity
+            initialAmount: homeDataForm.equity,
+            monthlyDeposit: ( homeDataForm.monthlyRepaymentAmount - homeDataForm.monthlyRentalAmount)
         };
 
         setData(dataChnage);

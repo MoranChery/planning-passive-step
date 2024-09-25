@@ -1,5 +1,5 @@
 import '../cssFiles/PassiveForm.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 
@@ -9,8 +9,18 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
     const [formData, setFormData] = useState({
         initialAmount: data.initialAmount,
         profitPercentage: data.profitPercentage,
-        taxPercentage: data.taxPercentage
+        taxPercentage: data.taxPercentage, 
+        monthlyDeposit : 0
     });
+
+    useEffect(() => {
+        if(data.monthlyDeposit > 0 ){
+            setFormData({
+                ...formData,
+                monthlyDeposit: data.monthlyDeposit
+            })
+        }
+     },[data]);
 
     const [errors, setErrors] = useState({});
 
@@ -81,6 +91,11 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
                     </div>
                     {errors.taxPercentage && <p className="error">{errors.taxPercentage}</p>}
                 </div>
+                {formData.monthlyDeposit > 0 ? (
+                    <p className='label-p'>סכום הפקדה חודשי: {formData.monthlyDeposit}</p>
+                ):(
+                    <div></div>
+                )}
             </div>
 
         </div>
