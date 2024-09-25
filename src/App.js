@@ -17,20 +17,23 @@ function App() {
     <div className="app">
 
       <BrowserRouter>
-        <header className="App-header">
-          <div className='nav-links'>
-            <div >
-              <NavLink className='nav-link' to="/">מחשבון עיקרי</NavLink>
+        <header >
+          <div className="App-header">
+            <div className='nav-links'>
+              <div >
+                <NavLink className='nav-link' to="/">מחשבון עיקרי</NavLink>
+              </div>
+              <div >
+                <NavLink className='nav-link' to="/houseVSpassive">השקעה פסיבית VS. דירה להשקעה</NavLink>
+              </div>
             </div>
-            <div >
-              <NavLink className='nav-link' to="/houseVSpassive">השקעה פסיבית VS. דירה להשקעה</NavLink>
-            </div>
+            <p> תכנון הצעד הפסיבי </p>
+            <img src={logo} className="App-logo" alt="logo" />
           </div>
-          <p> תכנון הצעד הפסיבי </p>
-          <img src={logo} className="App-logo" alt="logo" />
+          <meta className='ads' name="google-adsense-account" content="ca-pub-5506831364779263"></meta>
         </header>
         <div className="sidenav">
-          <meta className='ads' name="google-adsense-account" content="ca-pub-5506831364779263"></meta>
+
           <AboutMe></AboutMe>
         </div>
         <Routes>
@@ -46,7 +49,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-      
+
     </div >
   );
 }

@@ -17,7 +17,7 @@
 
 .ads {
     display: block;
-    width: 50px;
+    width: 100%;
     background-color: red;
     height: 15px;
 }
