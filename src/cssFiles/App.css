@@ -18,7 +18,8 @@
 .ads {
     display: block;
     width: 100%;
-    background-color: red;
+    background-color:#165d81;
+    margin-bottom: 20px;
     height: 15px;
 }
 
