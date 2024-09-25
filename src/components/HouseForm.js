@@ -27,9 +27,9 @@ const HouseForm = ({setData}) => {
     };
 
     return (
-        <div>
+        <div className='house-form'>
             <p className='title'>דירה להשקעה:</p>
-            <form className='house-form'>
+            <form >
 
                 <div className='field'>
                     <div className="form-group">

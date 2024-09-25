@@ -20,6 +20,12 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
                 monthlyDeposit: data.monthlyDeposit
             })
         }
+        else{
+            setFormData({
+                ...formData,
+                monthlyDeposit: 0
+            })
+        }
      },[data]);
 
     const [errors, setErrors] = useState({});
@@ -48,9 +54,9 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
     };
 
     return (
-        <div>
+        <div  className='house-form'>
             <p className='title'>השקעה פסיבית:</p>
-            <div className='house-form'>
+            <div>
                 <p className='label-p'>סכום השקעה ראשוני: {data.initialAmount}</p>
                 <div className='field'>
                     <div className="form-group">
