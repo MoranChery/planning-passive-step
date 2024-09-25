@@ -10,7 +10,8 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
         initialAmount: data.initialAmount,
         profitPercentage: data.profitPercentage,
         taxPercentage: data.taxPercentage,
-        monthlyDeposit: 0
+        monthlyDeposit: 0,
+        years : data.years
     });
 
     useEffect(() => {
@@ -117,6 +118,19 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
                 ) : (
                     <div></div>
                 )}
+                <div className='field'>
+                    <div className="form-group">
+                        <label className="inputClass" htmlFor="years">מספר שנים ראשונוצ להשקעה:</label>
+                        <input
+                            type="text"
+                            id="years"
+                            name="years"
+                            value={formData.years}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    {errors.years && <p className="error">{errors.years}</p>}
+                </div>
             </div>
 
         </div>

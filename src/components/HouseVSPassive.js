@@ -23,9 +23,13 @@ const HouseVSPassive = () => {
             initialAmount: 150000,
             profitPercentage: 5,
             taxPercentage: 25,
-            monthlyDeposit: 0
+            monthlyDeposit: 0,
+            years : 1
         }
     );
+
+    const [calculatorHome, setCalculatorHome ] = useState([]);
+    const [calculatorPassive, setCalculatorPassive ] = useState([]);
 
     const homeDataChange = (homeDataForm) => {
         let dataChnage = {
@@ -65,23 +69,63 @@ const HouseVSPassive = () => {
             initialAmount: 150000,
             profitPercentage: 5,
             taxPercentage: 25,
-            monthlyDeposit: 0
+            monthlyDeposit: 0,
+            years : 1
         }
         setHomeData(formDataReset);
         setPassiveData(passiveDataReset);
-      }
-    
-      // Handle form submission
-      const handleSubmit = (e) => {
+    };
+
+    const calculatorHomeStep = () => {
+        let calculatorHomeData = [];
+        for (let month= 0; month < (homeData.monthlyRepaymentPeriodYears*12) ; month++){
+            let row = {}
+            if(month === 0){
+                row = {
+                    monthNum : month, 
+                    totalInvestmentAmount: homeData.initialAmount,
+                    monthlyRepaymentAmount : 0,
+                    monthlyIncome: 0,
+                }
+            }
+            else if(month === 1){
+                row = {
+                    monthNum : month, 
+                    totalInvestmentAmount: homeData.initialAmount + parseInt(homeData.monthlyRepaymentAmount, 10),
+                    monthlyRepaymentAmount : parseInt(homeData.monthlyRepaymentAmount, 10),
+                    monthlyRentalAmount : parseInt(homeData.monthlyRentalAmount, 10),
+                    monthlyIncome: parseInt(homeData.monthlyRepaymentAmount, 10) - parseInt(homeData.monthlyRentalAmount, 10)
+                }
+            }
+            else {
+                let calMonthlyRentalAmount = calculatorHomeData[month-1].monthlyRentalAmount; 
+                if((month-1)%12 === 0 && month > 1){
+                    calMonthlyRentalAmount = calculatorHomeData[month-1].monthlyRentalAmount * (1+(homeData.expectChangeRentYear/100)); 
+                }
+                row = {
+                    monthNum : month, 
+                    totalInvestmentAmount: calculatorHomeData[month-1].totalInvestmentAmount + calculatorHomeData[month-1].monthlyRepaymentAmount,
+                    monthlyRepaymentAmount : calculatorHomeData[month-1].monthlyRepaymentAmount,
+                    monthlyRentalAmount : calMonthlyRentalAmount,
+                    monthlyIncome: calMonthlyRentalAmount - calculatorHomeData[month-1].monthlyRepaymentAmount
+                }
+            }
+            calculatorHomeData.push(row);
+        }
+        setCalculatorHome(calculatorHomeData);
+    }
+
+    const calculatorPassiveStep = () => {
+
+    }
+
+    // Handle form submission
+    const handleSubmit = (e) => {
         e.preventDefault();
-        // const formErrors = validate();
-        // setErrors(formErrors);
-        // if (Object.keys(formErrors).length === 0) {
-        //   onSubmit(formData);
-        // } else {
-        //   console.log('Form Error:', formErrors);
-        // }
-      };
+        calculatorHomeStep();
+        console.log(calculatorHome);
+        calculatorPassiveStep();
+    };
 
     return (
         <div>
@@ -92,7 +136,7 @@ const HouseVSPassive = () => {
             <div className='buttonsHomeVSPassive'>
                 <button type='reset' onClick={handleReset}>אתחל מחדש</button>
                 <button type="submit" onClick={handleSubmit}>השוואה</button>
-            </div>       
+            </div>
         </div>
 
     );
