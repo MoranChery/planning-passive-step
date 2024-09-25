@@ -10,7 +10,6 @@ import './cssFiles/App.css';
 import AboutMe from './components/AboutMe.js';
 import MainCalculator from "./components/MainCalculator";
 import HouseVSPassive from "./components/HouseVSPassive";
-import AdComponent from "./components/AdComponent";
 
 function App() {
 
@@ -29,7 +28,8 @@ function App() {
           </div>
           <p> תכנון הצעד הפסיבי </p>
           <img src={logo} className="App-logo" alt="logo" />
-          <AdComponent></AdComponent>
+          <meta name="google-adsense-account" content="ca-pub-5506831364779263"></meta>
+
         </header>
         <div className="sidenav">
           <AboutMe></AboutMe>
