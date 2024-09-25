@@ -113,11 +113,6 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
                     </div>
                     {errors.taxPercentage && <p className="error">{errors.taxPercentage}</p>}
                 </div>
-                {formData.monthlyDeposit > 0 ? (
-                    <p className='label-p'>סכום הפקדה חודשי: {numberWithCommas(formData.monthlyDeposit)}</p>
-                ) : (
-                    <div></div>
-                )}
                 <div className='field'>
                     <div className="form-group">
                         <label className="inputClass" htmlFor="years">מספר שנים ראשונוצ להשקעה:</label>
@@ -131,6 +126,11 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
                     </div>
                     {errors.years && <p className="error">{errors.years}</p>}
                 </div>
+                {formData.monthlyDeposit > 0 ? (
+                    <p className='label-p'>סכום הפקדה חודשי: {numberWithCommas(formData.monthlyDeposit)}</p>
+                ) : (
+                    <div></div>
+                )}
             </div>
 
         </div>
