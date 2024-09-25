@@ -78,7 +78,7 @@ const HouseVSPassive = () => {
 
     const calculatorHomeStep = () => {
         let calculatorHomeData = [];
-        for (let month= 0; month < (homeData.monthlyRepaymentPeriodYears*12) ; month++){
+        for (let month= 0; month < (homeData.monthlyRepaymentPeriodYears*12+1) ; month++){
             let row = {}
             if(month === 0){
                 row = {
