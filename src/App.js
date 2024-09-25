@@ -10,7 +10,7 @@ import './cssFiles/App.css';
 import AboutMe from './components/AboutMe.js';
 import MainCalculator from "./components/MainCalculator";
 import HouseVSPassive from "./components/HouseVSPassive";
-
+import AdComponent from "./components/AdComponent";
 
 function App() {
 
@@ -29,6 +29,7 @@ function App() {
           </div>
           <p> תכנון הצעד הפסיבי </p>
           <img src={logo} className="App-logo" alt="logo" />
+          <AdComponent></AdComponent>
         </header>
         <div className="sidenav">
           <AboutMe></AboutMe>
@@ -46,6 +47,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
+      
     </div >
   );
 }
