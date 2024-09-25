@@ -28,10 +28,9 @@ function App() {
           </div>
           <p> תכנון הצעד הפסיבי </p>
           <img src={logo} className="App-logo" alt="logo" />
-          <meta name="google-adsense-account" content="ca-pub-5506831364779263"></meta>
-
         </header>
         <div className="sidenav">
+          <meta className='ads' name="google-adsense-account" content="ca-pub-5506831364779263"></meta>
           <AboutMe></AboutMe>
         </div>
         <Routes>
