@@ -5,3 +5,12 @@
     gap: 15px;
     direction: rtl;
   }
+  .buttonsHomeVSPassive {
+    margin-top: 10px;
+    justify-content: flex-start;
+    display: flex;
+    direction: ltr;
+    gap: 20px;
+    padding-right: 2%;
+    width: 1098px;
+  }

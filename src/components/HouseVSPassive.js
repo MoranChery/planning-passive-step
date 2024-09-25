@@ -23,7 +23,7 @@ const HouseVSPassive = () => {
             initialAmount: 150000,
             profitPercentage: 5,
             taxPercentage: 25,
-            monthlyDeposit : 0
+            monthlyDeposit: 0
         }
     );
 
@@ -40,7 +40,7 @@ const HouseVSPassive = () => {
         let passiveDataChange = {
             ...passiveData,
             initialAmount: homeDataForm.equity,
-            monthlyDeposit: ( homeDataForm.monthlyRepaymentAmount - homeDataForm.monthlyRentalAmount)
+            monthlyDeposit: (homeDataForm.monthlyRepaymentAmount - homeDataForm.monthlyRentalAmount)
         };
 
         setData(dataChnage);
@@ -48,14 +48,21 @@ const HouseVSPassive = () => {
     };
 
     const setPassiveDataForm = (passiveDataForm) => {
-        
+        setPassiveData(passiveDataForm)
     };
 
     return (
-        <div className="form-body">
-            <HouseForm setData={homeDataChange}></HouseForm>
-            <PassiveForm data={passiveData} setPassiveDataForm={setPassiveDataForm}  ></PassiveForm>
+        <div>
+            <div className="form-body">
+                <HouseForm setData={homeDataChange}></HouseForm>
+                <PassiveForm data={passiveData} setPassiveDataForm={setPassiveDataForm}  ></PassiveForm>
+            </div>
+            <div className='buttonsHomeVSPassive'>
+                <button type='reset'>אתחל מחדש</button>
+                <button type="submit">השוואה</button>
+            </div>       
         </div>
+
     );
 };
 
