@@ -91,7 +91,7 @@ const HouseVSPassive = () => {
             else if(month === 1){
                 row = {
                     monthNum : month, 
-                    totalInvestmentAmount: homeData.initialAmount + parseInt(homeData.monthlyRepaymentAmount, 10),
+                    totalInvestmentAmount: parseInt(homeData.initialAmount, 10) + parseInt(homeData.monthlyRepaymentAmount, 10),
                     monthlyRepaymentAmount : parseInt(homeData.monthlyRepaymentAmount, 10),
                     monthlyRentalAmount : parseInt(homeData.monthlyRentalAmount, 10),
                     monthlyIncome: parseInt(homeData.monthlyRepaymentAmount, 10) - parseInt(homeData.monthlyRentalAmount, 10)
