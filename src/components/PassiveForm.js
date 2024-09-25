@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 
 const PassiveForm = ({ data, setPassiveDataForm }) => {
 
-    const [checked, setChecked] = React.useState(false);
+    const [checked, setChecked] = useState(false);
     const [formData, setFormData] = useState({
         initialAmount: data.initialAmount,
         profitPercentage: data.profitPercentage,
