@@ -30,6 +30,15 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
 
     const [errors, setErrors] = useState({});
 
+
+    function numberWithCommas(number) {
+        var pattern = /(-?\d+)(\d{3})/;
+        let numberStr = (number).toString()
+        while (pattern.test(numberStr))
+            numberStr = numberStr.replace(pattern, "$1,$2");
+        return numberStr;
+    }
+
     const handleSelect = () => {
         if (!checked) {
             setErrors({ ...errors, profitPercentage: "" })
@@ -57,7 +66,7 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
         <div  className='house-form'>
             <p className='title'>השקעה פסיבית:</p>
             <div>
-                <p className='label-p'>סכום השקעה ראשוני: {data.initialAmount}</p>
+                <p className='label-p'>סכום השקעה ראשוני: { numberWithCommas(data.initialAmount)}</p>
                 <div className='field'>
                     <div className="form-group">
                         <label className="inputClass" htmlFor="profitPercentage">אחוז הרווח השנתי הצפוי:</label>
@@ -98,7 +107,7 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
                     {errors.taxPercentage && <p className="error">{errors.taxPercentage}</p>}
                 </div>
                 {formData.monthlyDeposit > 0 ? (
-                    <p className='label-p'>סכום הפקדה חודשי: {formData.monthlyDeposit}</p>
+                    <p className='label-p'>סכום הפקדה חודשי: {numberWithCommas(formData.monthlyDeposit)}</p>
                 ):(
                     <div></div>
                 )}
