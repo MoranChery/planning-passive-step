@@ -9,34 +9,40 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
     const [formData, setFormData] = useState({
         initialAmount: data.initialAmount,
         profitPercentage: data.profitPercentage,
-        taxPercentage: data.taxPercentage, 
-        monthlyDeposit : 0
+        taxPercentage: data.taxPercentage,
+        monthlyDeposit: 0
     });
 
     useEffect(() => {
-        if(data.monthlyDeposit > 0 ){
+        if (data.monthlyDeposit > 0) {
             setFormData({
-                ...formData,
+                ...data,
                 monthlyDeposit: data.monthlyDeposit
             })
         }
-        else{
+        else {
             setFormData({
-                ...formData,
+                ...data,
                 monthlyDeposit: 0
             })
         }
-     },[data]);
+    }, [data]);
 
     const [errors, setErrors] = useState({});
 
 
     function numberWithCommas(number) {
-        var pattern = /(-?\d+)(\d{3})/;
-        let numberStr = (number).toString()
-        while (pattern.test(numberStr))
-            numberStr = numberStr.replace(pattern, "$1,$2");
-        return numberStr;
+        if (number) {
+            var pattern = /(-?\d+)(\d{3})/;
+            let numberStr = (number).toString()
+            while (pattern.test(numberStr))
+                numberStr = numberStr.replace(pattern, "$1,$2");
+            return numberStr;
+        }
+        else {
+            return '';
+        }
+
     }
 
     const handleSelect = () => {
@@ -63,10 +69,10 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
     };
 
     return (
-        <div  className='house-form'>
+        <div className='house-form'>
             <p className='title'>השקעה פסיבית:</p>
             <div>
-                <p className='label-p'>סכום השקעה ראשוני: { numberWithCommas(data.initialAmount)}</p>
+                <p className='label-p'>סכום השקעה ראשוני: {numberWithCommas(data.initialAmount)}</p>
                 <div className='field'>
                     <div className="form-group">
                         <label className="inputClass" htmlFor="profitPercentage">אחוז הרווח השנתי הצפוי:</label>
@@ -108,7 +114,7 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
                 </div>
                 {formData.monthlyDeposit > 0 ? (
                     <p className='label-p'>סכום הפקדה חודשי: {numberWithCommas(formData.monthlyDeposit)}</p>
-                ):(
+                ) : (
                     <div></div>
                 )}
             </div>

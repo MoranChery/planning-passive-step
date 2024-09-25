@@ -3,18 +3,26 @@ import React, { useState, useEffect } from 'react';
 
 
 
-const HouseForm = ({setData}) => {
+const HouseForm = ({ data, setData }) => {
     const [formData, setFormData] = useState({
-        equity: 150000,
-        monthlyRepaymentAmount: 4000,
-        monthlyRentalAmount: 4000 ,
-        expectChangeRentYear : 3, 
-        monthlyRepaymentPeriodYears: 20
+        equity: data.initialAmount,
+        monthlyRepaymentAmount: data.monthlyRepaymentAmount,
+        monthlyRentalAmount: data.monthlyRentalAmount,
+        expectChangeRentYear: data.expectChangeRentYear,
+        monthlyRepaymentPeriodYears: data.monthlyRepaymentPeriodYears
     });
 
     useEffect(() => {
-        setData(formData);
-     },[]);
+        setFormData(
+            {
+                equity: data.initialAmount,
+                monthlyRepaymentAmount: data.monthlyRepaymentAmount,
+                monthlyRentalAmount: data.monthlyRentalAmount,
+                expectChangeRentYear: data.expectChangeRentYear,
+                monthlyRepaymentPeriodYears: data.monthlyRepaymentPeriodYears
+            }
+        )
+    }, [data]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
