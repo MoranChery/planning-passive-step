@@ -120,13 +120,22 @@ const HouseVSPassive = () => {
         let calculatorPassiveData = []; 
         let startAmount = passiveData.initialAmount;
         let rateMonth = passiveData.profitPercentage/1200;
-        for (let i = 1; i < homeDataStep.length ;i++ ) { 
+        for (let i = 0; i < homeDataStep.length ;i++ ) { 
             let monthlyDepositCal = 0;
+            let row = {}
             if(homeDataStep[i].monthlyIncome < 0 ){
                 monthlyDepositCal = -homeDataStep[i].monthlyIncome;
             }
-            let row = {}
-            if(i === 1){
+            if(i == 0) {
+                row = {
+                    month : i,
+                    amountStartMonth: 0,
+                    pofit: 0,
+                    monthlyDeposit : 0,
+                    amountEndMonth: startAmount
+                }
+            }
+            else if(i === 1){
                 row = {
                     month : i,
                     amountStartMonth: startAmount,
@@ -136,7 +145,7 @@ const HouseVSPassive = () => {
                 }
             }
             else{
-                startAmount = calculatorPassiveData[i-2].amountEndMonth;
+                startAmount = calculatorPassiveData[i-1].amountEndMonth;
                 row = {
                     month: i,
                     amountStartMonth: startAmount,
