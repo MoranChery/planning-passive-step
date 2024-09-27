@@ -115,7 +115,7 @@ const PassiveForm = ({ data, setPassiveDataForm }) => {
                 </div>
                 <div className='field'>
                     <div className="form-group">
-                        <label className="inputClass" htmlFor="years">מספר שנים ראשונוצ להשקעה:</label>
+                        <label className="inputClass" htmlFor="years">מספר שנים ראשונות להשקעה:</label>
                         <input
                             type="text"
                             id="years"

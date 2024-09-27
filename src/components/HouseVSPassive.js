@@ -94,7 +94,7 @@ const HouseVSPassive = () => {
                     totalInvestmentAmount: parseInt(homeData.initialAmount, 10) + parseInt(homeData.monthlyRepaymentAmount, 10),
                     monthlyRepaymentAmount : parseInt(homeData.monthlyRepaymentAmount, 10),
                     monthlyRentalAmount : parseInt(homeData.monthlyRentalAmount, 10),
-                    monthlyIncome: parseInt(homeData.monthlyRepaymentAmount, 10) - parseInt(homeData.monthlyRentalAmount, 10)
+                    monthlyIncome: parseInt(homeData.monthlyRentalAmount, 10) -  parseInt(homeData.monthlyRepaymentAmount, 10)
                 }
             }
             else {
@@ -113,18 +113,52 @@ const HouseVSPassive = () => {
             calculatorHomeData.push(row);
         }
         setCalculatorHome(calculatorHomeData);
+        return calculatorHomeData;
     }
 
-    const calculatorPassiveStep = () => {
-
+    const calculatorPassiveStep = (homeDataStep) => {
+        let calculatorPassiveData = []; 
+        let startAmount = passiveData.initialAmount;
+        let rateMonth = passiveData.profitPercentage/1200;
+        for (let i = 1; i < homeDataStep.length ;i++ ) { 
+            let monthlyDepositCal = 0;
+            if(homeDataStep[i].monthlyIncome < 0 ){
+                monthlyDepositCal = -homeDataStep[i].monthlyIncome;
+            }
+            let row = {}
+            if(i === 1){
+                row = {
+                    month : i,
+                    amountStartMonth: startAmount,
+                    pofit: startAmount*rateMonth,
+                    monthlyDeposit : monthlyDepositCal,
+                    amountEndMonth: startAmount*(1+rateMonth)+monthlyDepositCal
+                }
+            }
+            else{
+                startAmount = calculatorPassiveData[i-2].amountEndMonth;
+                row = {
+                    month: i,
+                    amountStartMonth: startAmount,
+                    pofit: startAmount*rateMonth,
+                    monthlyDeposit : monthlyDepositCal,
+                    amountEndMonth: startAmount*(1+rateMonth)+monthlyDepositCal
+                }
+            }
+            
+            calculatorPassiveData.push(row);
+        }
+        setCalculatorPassive(calculatorPassiveData);
+        return calculatorPassiveData;
     }
 
     // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        calculatorHomeStep();
-        console.log(calculatorHome);
-        calculatorPassiveStep();
+        let homeDataStep =  calculatorHomeStep();
+        console.log(homeDataStep);
+        let passiveDataStep = calculatorPassiveStep(homeDataStep);
+        console.log(passiveDataStep);
     };
 
     return (
