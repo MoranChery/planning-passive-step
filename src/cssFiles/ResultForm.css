@@ -1,0 +1,14 @@
+.result-form {
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: right;
+    width: 550px;
+}
+
+.formExplainLabel {
+    font-size: large;
+    font-weight: bold;
+    text-decoration: underline ;
+}

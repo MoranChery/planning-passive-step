@@ -1,0 +1,56 @@
+.web-data-label,
+.my-data {
+    font-size: 18px;
+    color: #012b20
+}
+
+.web-data{
+    padding-top: 5%;
+}
+
+.info-data{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    box-sizing: border-box;
+    padding: 2rem;
+    max-width: 800px;
+}
+
+.about-me, .website-purpose {
+    border-radius: 5px;
+    box-shadow: 0 0 10px #012b20;
+    margin: 1rem;
+    background-color: #527a6d;
+    min-height: fit-content;
+}
+
+h2 {
+    border-bottom: 2px solid #333333;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 0px;
+    color: #013426;
+}
+
+strong , .main-functions{
+    color: rgb(2, 31, 24);
+    text-decoration: underline ;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 0.5rem;
+}
+
+.main-functions {
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
