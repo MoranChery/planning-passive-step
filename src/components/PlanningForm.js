@@ -3,19 +3,29 @@ import PropTypes from 'prop-types';
 import '../cssFiles/PlanningForm.css';
 
 const PlanningForm = ({ onSubmit }) => {
-  const [formData, setFormData] = useState({
-    initialAmount: '100000',
-    profitPercentage: '5',
-    years: '5',
-    addPercentage: '10',
-    taxPercentage: '25',
-    partialWithdrawalPercentage: '90',
-  });
+  
+  const [formData, setFormData] = useState(setInitData());
 
   const [checked, setChecked] = React.useState(false);
   const [checkdOpt, setCheckedOpt] = React.useState(false);
 
   const [errors, setErrors] = useState({});
+
+  function setInitData(){
+    let data = window.sessionStorage.getItem("formData");
+    let initFormData = {
+      initialAmount: '100000',
+      profitPercentage: '5',
+      years: '5',
+      addPercentage: '10',
+      taxPercentage: '25',
+      partialWithdrawalPercentage: '90',
+    };
+    if(data){
+      initFormData = JSON.parse(data);
+    }
+    return initFormData;
+  }
 
   useEffect(() => {
     onSubmit(formData);
@@ -81,6 +91,7 @@ const PlanningForm = ({ onSubmit }) => {
     const formErrors = validate();
     setErrors(formErrors);
     if (Object.keys(formErrors).length === 0) {
+      window.sessionStorage.setItem("formData", JSON.stringify(formData));
       onSubmit(formData);
     } else {
       console.log('Form Error:', formErrors);
