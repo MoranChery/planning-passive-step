@@ -19,7 +19,7 @@ const PlanningForm = ({ onSubmit }) => {
       profitPercentage: '5',
       years: '5',
       inflation: '3',
-      addPercentage: '10',
+      addPercentage: '0',
       taxPercentage: '25',
       partialWithdrawalPercentage: '90',
     };
@@ -85,7 +85,7 @@ const PlanningForm = ({ onSubmit }) => {
       profitPercentage: '5',
       years: '5',
       inflation: '3',
-      addPercentage: '10',
+      addPercentage: '0',
       taxPercentage: '25',
       partialWithdrawalPercentage: '90'
     };
