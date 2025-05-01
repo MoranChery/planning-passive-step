@@ -93,6 +93,7 @@ const PlanningForm = ({ onSubmit }) => {
     setErrors({});
     setChecked(false);
     setCheckedOpt(false);
+    setCheckedInflation(false);
     onSubmit(formDataReset);
   }
 
