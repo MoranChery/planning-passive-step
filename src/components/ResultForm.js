@@ -22,8 +22,10 @@ const ResultForm = ({ formData }) => {
             var yearsInt = parseInt(formData.years, 10);
             var profitPercentageInt = parseFloat(formData.profitPercentage, 10);
             let mathPow = Math.pow(((100+profitPercentageInt)/100), yearsInt);
-            let totalWithProfit =initialAmountInt * mathPow;
+            let totalWithProfit =initialAmountInt * mathPow;    
             let totalWithProfitFormat = numberWithCommas((Math.round(totalWithProfit * 100) / 100).toString());
+            let initProfit = totalWithProfit-initialAmountInt;
+            let initProfitFormat = numberWithCommas((Math.round(initProfit * 100) / 100).toString());
             let annualInflationIsraelPercent = parseFloat(formData.inflation, 10);
             let annualInflationIsraelTotal =  (initialAmountInt *(annualInflationIsraelPercent/100) * (mathPow-1))/ (((100+profitPercentageInt)/100)-1);
             let annualInflationIsraelTotalFormat = numberWithCommas((Math.round(annualInflationIsraelTotal * 100) / 100).toString());
@@ -64,6 +66,7 @@ const ResultForm = ({ formData }) => {
             let totalYearslyDepositFormat= '';
             let depositProfitFormat = '';
             let totalProfitWithMonthFormat= '';
+            let totalProfitFormat= '';
             if(monthlyDepositAmount > 0 ){
                 let yearlyDeposit = monthlyDepositAmount * 12;
                 let depositProfit = 0;
@@ -72,15 +75,15 @@ const ResultForm = ({ formData }) => {
                 }
                 
                 setHasMonthlyDepositAmount(true);
+                totalProfitWithMonthFormat = numberWithCommas((Math.round(depositProfit * 100) / 100).toString());
                 let totalWithProfitIncludingDeposits = totalWithProfit + depositProfit;
                 totalWithProfitIncludingDepositsFormat = numberWithCommas((Math.round(totalWithProfitIncludingDeposits * 100) / 100).toString());
                 let totalYearslyDeposit = yearsInt * yearlyDeposit;
                 totalYearslyDepositFormat = numberWithCommas((Math.round(totalYearslyDeposit * 100) / 100).toString());
-                depositProfit= depositProfit-totalYearslyDeposit;
+                depositProfit = depositProfit-totalYearslyDeposit;
                 depositProfitFormat = numberWithCommas((Math.round(depositProfit * 100) / 100).toString());
-                let totalProfitWithMonth = depositProfit+totalWithProfit+totalYearslyDeposit;
-                totalProfitWithMonthFormat = numberWithCommas((Math.round(totalProfitWithMonth * 100) / 100).toString());
-
+                let totalProfit = initProfit+depositProfit;
+                totalProfitFormat = numberWithCommas((Math.round(totalProfit * 100) / 100).toString());
             }
             else{ 
                 setHasMonthlyDepositAmount(false);
@@ -89,6 +92,7 @@ const ResultForm = ({ formData }) => {
 
             return {
                 totalWithProfit: totalWithProfitFormat,
+                initProfit: initProfitFormat,
                 annualInflationIsraelPercent : annualInflationIsraelPercent,
                 annualInflationIsraelTotal: annualInflationIsraelTotalFormat,
                 profitAfterInflation: profitAfterInflationFormat,
@@ -102,7 +106,8 @@ const ResultForm = ({ formData }) => {
                 totalWithProfitIncludingDeposits: totalWithProfitIncludingDepositsFormat,
                 totalYearslyDepositFormat: totalYearslyDepositFormat,
                 depositProfit: depositProfitFormat,
-                totalProfitWithMonth: totalProfitWithMonthFormat
+                totalProfitWithMonth: totalProfitWithMonthFormat,
+                totalProfit: totalProfitFormat
             }
         };
 

@@ -14,6 +14,13 @@ return (
 			<td>--</td>
 			<td>{formDataPrint.initialAmount}</td>
 		</tr>
+		{hasMonthlyDepositAmount &&
+		<tr>
+			<td>רווח על הסכום ההתחלתי</td>
+			<td>--</td>
+			<td>{calculation.initProfit}</td>
+		</tr>
+		}
 		<tr>
 			<td>הסכום כולל הרווח אחרי {formData.years} שנים (ללא הפקדה)</td>
 			<td>{formData.profitPercentage}%</td>
@@ -21,7 +28,7 @@ return (
 		</tr>
 		{hasMonthlyDepositAmount &&
 		<tr className='blocker-up'>
-			<td>סכום הפקדה כוללת ל-{formData.years} שנים</td>
+			<td>סכום הפקדה חודשית כוללת ל-{formData.years} שנים</td>
 			<td>--</td>
 			<td>{calculation.totalYearslyDepositFormat}</td>
 		</tr>
@@ -35,9 +42,23 @@ return (
 		}
 		{hasMonthlyDepositAmount &&
 		<tr>
-			<td>הסכום הכולל</td>
+			<td>הסכום כולל הפקדות חודשיות והרווח</td>
 			<td>--</td>
 			<td>{calculation.totalProfitWithMonth}</td>
+		</tr>
+		}
+		{hasMonthlyDepositAmount &&
+		<tr className='blocker-up'>
+			<td> רווח כולל</td>
+			<td>--</td>
+			<td>{calculation.totalProfit}</td>
+		</tr>
+		}
+		{hasMonthlyDepositAmount &&
+		<tr>
+			<td>סכום כולל</td>
+			<td>--</td>
+			<td>{calculation.totalWithProfitIncludingDeposits}</td>
 		</tr>
 		}
 		<tr className='blocker-up'>
