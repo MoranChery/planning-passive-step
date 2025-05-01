@@ -23,7 +23,7 @@ const ResultForm = ({ formData }) => {
             let mathPow = Math.pow(((100+profitPercentageInt)/100), yearsInt);
             let totalWithProfit =initialAmountInt * mathPow;
             let totalWithProfitFormat = numberWithCommas((Math.round(totalWithProfit * 100) / 100).toString());
-            let annualInflationIsraelPercent = 3;
+            let annualInflationIsraelPercent = parseFloat(formData.inflation, 10);
             let annualInflationIsraelTotal =  (initialAmountInt *(annualInflationIsraelPercent/100) * (mathPow-1))/ (((100+profitPercentageInt)/100)-1);
             let annualInflationIsraelTotalFormat = numberWithCommas((Math.round(annualInflationIsraelTotal * 100) / 100).toString());
 

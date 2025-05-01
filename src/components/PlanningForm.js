@@ -8,6 +8,7 @@ const PlanningForm = ({ onSubmit }) => {
 
   const [checked, setChecked] = React.useState(false);
   const [checkdOpt, setCheckedOpt] = React.useState(false);
+  const [checkdInflation, setCheckedInflation] = React.useState(false);
 
   const [errors, setErrors] = useState({});
 
@@ -17,6 +18,7 @@ const PlanningForm = ({ onSubmit }) => {
       initialAmount: '100000',
       profitPercentage: '5',
       years: '5',
+      inflation: '3',
       addPercentage: '10',
       taxPercentage: '25',
       partialWithdrawalPercentage: '90',
@@ -45,9 +47,16 @@ const PlanningForm = ({ onSubmit }) => {
     }
     setFormData({ ...formData, partialWithdrawalPercentage: "100" });
     setCheckedOpt(!checkdOpt);
-    
   };
 
+
+  const handleChangeInflation = () => {
+    if(!checkdInflation){
+      setErrors({...errors,inflation:"" });
+    }
+    setFormData({ ...formData, inflation: "3" });
+    setCheckedInflation(!checkdInflation);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -62,6 +71,7 @@ const PlanningForm = ({ onSubmit }) => {
     const newErrors = {};
     if (!/^\d+$/.test(formData.initialAmount)) newErrors.initialAmount = 'סכום התחלתי חייב להיות גדול מ-0 וחייב להיות מספר שלם , לא ניתן לשים מספר עשרוני';
     if (!/^\d+(\.\d+)?$/.test(formData.profitPercentage) && !checked) newErrors.profitPercentage = 'יש למלא את אחוז הרווח המצופה או לבחור בערך ברחרת מחדל';
+    if (!/^\d+(\.\d+)?$/.test(formData.inflation) && !checkdInflation) newErrors.inflation = 'יש למלא את אחוז האינפלציה הצפויה או לבחור בערך ברחרת מחדל';
     if (!/^\d+$/.test(formData.years)) newErrors.years = 'מספר השנים חייב להיות מספר שלם גדול מ-0';
     if (!/^\d+(\.\d+)?$/.test(formData.partialWithdrawalPercentage) && !checkdOpt) newErrors.partialWithdrawalPercentage = 'יש לשים מספר בין 1 ל 100 או לבחור את הללא בחירה';
     if (!/^\d+(\.\d+)?$/.test(formData.taxPercentage)) newErrors.taxPercentage = 'חייבים לציין את אחוז המס הצפוי';
@@ -74,6 +84,7 @@ const PlanningForm = ({ onSubmit }) => {
       initialAmount: '100000',
       profitPercentage: '5',
       years: '5',
+      inflation: '3',
       addPercentage: '10',
       taxPercentage: '25',
       partialWithdrawalPercentage: '90'
@@ -152,6 +163,32 @@ const PlanningForm = ({ onSubmit }) => {
           />
         </div>
         {errors.years && <p className="error">{errors.years}</p>}
+      </div>
+
+      <div className='field'>
+        <div className="form-group">
+          <label className="inputClass" htmlFor="inflation">אחוז האינפלציה השנתית הצפויה:</label>
+          <input
+            type="text"
+            id="inflation"
+            name="inflation"
+            value={formData.inflation}
+            disabled={checkdInflation}
+            onChange={handleChange}
+            placeholder="x.y%"
+          />
+
+        </div>
+        <div>
+          <label className='checkboxLabel'>
+            <input
+              type="checkbox"
+              checked={checkdInflation}
+              onChange={handleChangeInflation}
+            /> בחר ערך ברירת מחדל
+          </label>
+        </div>
+        {errors.inflation && <p className="error">{errors.inflation}</p>}
       </div>
 
       <div className='field'>
