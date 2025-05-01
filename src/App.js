@@ -1,5 +1,5 @@
 import logo from './money-graph-with-up-arrow.png';
-import './cssFiles/App.css';
+import './App.css';
 import PlanningForm from './components/PlanningForm.js';
 import ResultForm from './components/ResultForm.js';
 import AboutMe from './components/AboutMe.js';
@@ -17,16 +17,18 @@ function App() {
 
   return (
     <div className="App">
-      <div class="sidenav">
-        <AboutMe></AboutMe>
-      </div>
       <header className="App-header">
         <p> תכנון הצעד הפסיבי </p>
         <img src={logo} className="App-logo" alt="logo" />
       </header>
-      <body>
-        <PlanningForm onSubmit={handleSubmit} />
-        <ResultForm formData={formData}></ResultForm>
+      <body className="App-body" >
+        <div class="sidenav">
+          <AboutMe></AboutMe>
+        </div>
+        <div class="form-get-cahnge">
+          <PlanningForm onSubmit={handleSubmit} />
+          <ResultForm formData={formData}></ResultForm>
+        </div>
       </body>
     </div>
   );

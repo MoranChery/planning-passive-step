@@ -2,6 +2,7 @@
 .App-logo {
   height: 5vmin;
   animation: colorTransition 10s linear infinite;
+  margin-right: 2%;
 }
 
 @keyframes colorTransition {
@@ -22,7 +23,6 @@
 .App-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
   background-color: #282c34; /* Or any color that fits your theme */
   text-align: center;
   min-height: 5vh;
@@ -32,23 +32,34 @@
   justify-content: end;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding-right: 2%;
+  border-bottom: 2px solid white;
+  margin-bottom: 1%;
+  width: 80%;
+  margin-left: 20%;
 }
 
-
-body{
-  padding-right: 2%;
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 20px;
-}
 
 .sidenav {
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 20%; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  top: 0; /* Stay at the top */
-  left: 0;
   border: 1px solid #ccc;
   direction: rtl;
+  overflow-y: auto;            /* Enables vertical scroll when needed */
+  top: 0;
+  scroll-behavior: smooth;
+}
+.sidenav::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+
+.form-get-cahnge {
+  margin-left: 20%; /* Start AFTER the sidebar (which is 20% wide) */
+  width: 80%;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  justify-content: flex-start; /* Ensures content starts at right in row-reverse */
 }
