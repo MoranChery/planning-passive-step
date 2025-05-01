@@ -1,6 +1,6 @@
 import '../cssFiles/FormExplain.css';
 
-const FormExplain = ({formData,formDataPrint, calculation, hasAddPercentage}) => {
+const FormExplain = ({formData,formDataPrint, calculation, hasAddPercentage, hasMonthlyDepositAmount}) => {
     
     return (
         <div className='form-explain'>

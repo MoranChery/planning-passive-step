@@ -1,6 +1,6 @@
 import '../cssFiles/ResultTable.css';
 
-const ResultTable = ({formData,formDataPrint, calculation, hasAddPercentage}) => {
+const ResultTable = ({formData,formDataPrint, calculation, hasAddPercentage, hasMonthlyDepositAmount}) => {
 return (
 <div className="tableCss">
 	<table>
@@ -15,10 +15,31 @@ return (
 			<td>{formDataPrint.initialAmount}</td>
 		</tr>
 		<tr>
-			<td>הסכום כולל הרווח אחרי {formData.years} שנים</td>
+			<td>הסכום כולל הרווח אחרי {formData.years} שנים (ללא הפקדה)</td>
 			<td>{formData.profitPercentage}%</td>
 			<td>{calculation.totalWithProfit}</td>
 		</tr>
+		{hasMonthlyDepositAmount &&
+		<tr className='blocker-up'>
+			<td>סכום הפקדה כוללת ל-{formData.years} שנים</td>
+			<td>--</td>
+			<td>{calculation.totalYearslyDepositFormat}</td>
+		</tr>
+		}
+		{hasMonthlyDepositAmount &&
+		<tr>
+			<td>הרווח על ההפקדות החודשיות</td>
+			<td>--</td>
+			<td>{calculation.depositProfit}</td>
+		</tr>
+		}
+		{hasMonthlyDepositAmount &&
+		<tr>
+			<td>הסכום הכולל</td>
+			<td>--</td>
+			<td>{calculation.totalProfitWithMonth}</td>
+		</tr>
+		}
 		<tr className='blocker-up'>
 			<td>אינפלציה</td>
 			<td>{calculation.annualInflationIsraelPercent}% </td>

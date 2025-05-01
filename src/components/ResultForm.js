@@ -7,6 +7,7 @@ const ResultForm = ({ formData }) => {
     const [formDataPrint, setFormDataPrint] = useState({});
     const [calculation, setCalculation] = useState({});
     const [hasAddPercentage, setHasAddPercentage] = useState(false);
+    const [hasMonthlyDepositAmount, setHasMonthlyDepositAmount] = useState(false);
 
     function numberWithCommas(numberStr) {
         var pattern = /(-?\d+)(\d{3})/;
@@ -58,7 +59,34 @@ const ResultForm = ({ formData }) => {
             else {
                 setHasAddPercentage(false);
             }
-    
+            let monthlyDepositAmount = parseFloat(formData.monthlyDepositAmount || 0);
+            let totalWithProfitIncludingDepositsFormat= 0;
+            let totalYearslyDepositFormat= '';
+            let depositProfitFormat = '';
+            let totalProfitWithMonthFormat= '';
+            if(monthlyDepositAmount > 0 ){
+                let yearlyDeposit = monthlyDepositAmount * 12;
+                let depositProfit = 0;
+                if (yearlyDeposit > 0 && profitPercentageInt > 0) {
+                    depositProfit = yearlyDeposit * ((Math.pow(((100 + profitPercentageInt) / 100), yearsInt) - 1) / ((profitPercentageInt) / 100));
+                }
+                
+                setHasMonthlyDepositAmount(true);
+                let totalWithProfitIncludingDeposits = totalWithProfit + depositProfit;
+                totalWithProfitIncludingDepositsFormat = numberWithCommas((Math.round(totalWithProfitIncludingDeposits * 100) / 100).toString());
+                let totalYearslyDeposit = yearsInt * yearlyDeposit;
+                totalYearslyDepositFormat = numberWithCommas((Math.round(totalYearslyDeposit * 100) / 100).toString());
+                depositProfit= depositProfit-totalYearslyDeposit;
+                depositProfitFormat = numberWithCommas((Math.round(depositProfit * 100) / 100).toString());
+                let totalProfitWithMonth = depositProfit+totalWithProfit;
+                totalProfitWithMonthFormat = numberWithCommas((Math.round(totalProfitWithMonth * 100) / 100).toString());
+
+            }
+            else{ 
+                setHasMonthlyDepositAmount(false);
+            }
+            
+
             return {
                 totalWithProfit: totalWithProfitFormat,
                 annualInflationIsraelPercent : annualInflationIsraelPercent,
@@ -70,9 +98,14 @@ const ResultForm = ({ formData }) => {
                 monthlyAmount: monthlyAmountFormat,
                 addPercentageAmount: addPercentageAmountFormat,
                 totalAfterAddPercentage: totalAfterAddPercentageFormat,
-                monthlyAmountAfterAddPercentage: monthlyAmountAfterAddPercentageFormat
+                monthlyAmountAfterAddPercentage: monthlyAmountAfterAddPercentageFormat,
+                totalWithProfitIncludingDeposits: totalWithProfitIncludingDepositsFormat,
+                totalYearslyDepositFormat: totalYearslyDepositFormat,
+                depositProfit: depositProfitFormat,
+                totalProfitWithMonth: totalProfitWithMonthFormat
             }
         };
+
 
         let initialAmountFormat = "0";
         if (formData.initialAmount){
@@ -82,7 +115,8 @@ const ResultForm = ({ formData }) => {
             initialAmount: initialAmountFormat,
             taxPercentage : formData.taxPercentage+"%"
          })
-         setCalculation(calculator());
+         let dataCal = calculator();
+         setCalculation(dataCal);
     }, [formData]);
 
     
@@ -93,14 +127,16 @@ const ResultForm = ({ formData }) => {
                 formData={formData}
                 formDataPrint={formDataPrint}
                 calculation={calculation}
-                hasAddPercentage={hasAddPercentage}>
+                hasAddPercentage={hasAddPercentage}
+                hasMonthlyDepositAmount={hasMonthlyDepositAmount}>
             </ResultTable>
             <label className='formExplainLabel'> הסבר:</label>
             <FormExplain
                 formData={formData}
                 formDataPrint={formDataPrint}
                 calculation={calculation}
-                hasAddPercentage={hasAddPercentage}>
+                hasAddPercentage={hasAddPercentage}
+                hasMonthlyDepositAmount={hasMonthlyDepositAmount}>
             </FormExplain>
         </div>
     )

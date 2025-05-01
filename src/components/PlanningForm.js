@@ -19,6 +19,7 @@ const PlanningForm = ({ onSubmit }) => {
       profitPercentage: '5',
       years: '5',
       inflation: '3',
+      monthlyDepositAmount: '1000',
       addPercentage: '0',
       taxPercentage: '25',
       partialWithdrawalPercentage: '90',
@@ -70,6 +71,7 @@ const PlanningForm = ({ onSubmit }) => {
   const validate = () => {
     const newErrors = {};
     if (!/^\d+$/.test(formData.initialAmount)) newErrors.initialAmount = 'סכום התחלתי חייב להיות גדול מ-0 וחייב להיות מספר שלם , לא ניתן לשים מספר עשרוני';
+    if (!/^\d+$/.test(formData.monthlyDepositAmount)) newErrors.monthlyDepositAmount = 'סכום הפקדה חודשית חייב להיות מספר שלם, לא ניתן לשים מספר עשרוני';
     if (!/^\d+(\.\d+)?$/.test(formData.profitPercentage) && !checked) newErrors.profitPercentage = 'יש למלא את אחוז הרווח המצופה או לבחור בערך ברחרת מחדל';
     if (!/^\d+(\.\d+)?$/.test(formData.inflation) && !checkdInflation) newErrors.inflation = 'יש למלא את אחוז האינפלציה הצפויה או לבחור בערך ברחרת מחדל';
     if (!/^\d+$/.test(formData.years)) newErrors.years = 'מספר השנים חייב להיות מספר שלם גדול מ-0';
@@ -85,6 +87,7 @@ const PlanningForm = ({ onSubmit }) => {
       profitPercentage: '5',
       years: '5',
       inflation: '3',
+      monthlyDepositAmount: '1000',
       addPercentage: '0',
       taxPercentage: '25',
       partialWithdrawalPercentage: '90'
@@ -190,6 +193,20 @@ const PlanningForm = ({ onSubmit }) => {
           </label>
         </div>
         {errors.inflation && <p className="error">{errors.inflation}</p>}
+      </div>
+
+      <div className='field'>
+        <div className="form-group">
+          <label className="inputClass" htmlFor="monthlyDepositAmount">סכום הפקדה חודשית:</label>
+          <input
+            type="number"
+            id="monthlyDepositAmount"
+            name="monthlyDepositAmount"
+            value={formData.monthlyDepositAmount}
+            onChange={handleChange}
+          />
+        </div>
+        {errors.monthlyDepositAmount && <p className="error">{errors.monthlyDepositAmount}</p>}
       </div>
 
       <div className='field'>
