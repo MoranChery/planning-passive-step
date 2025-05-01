@@ -20,6 +20,10 @@
 
 
 .App-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #282c34; /* Or any color that fits your theme */
   text-align: center;
   min-height: 5vh;
   display: flex;
@@ -30,6 +34,7 @@
   color: white;
   padding-right: 2%;
 }
+
 
 body{
   padding-right: 2%;
