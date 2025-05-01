@@ -78,7 +78,7 @@ const ResultForm = ({ formData }) => {
                 totalYearslyDepositFormat = numberWithCommas((Math.round(totalYearslyDeposit * 100) / 100).toString());
                 depositProfit= depositProfit-totalYearslyDeposit;
                 depositProfitFormat = numberWithCommas((Math.round(depositProfit * 100) / 100).toString());
-                let totalProfitWithMonth = depositProfit+totalWithProfit;
+                let totalProfitWithMonth = depositProfit+totalWithProfit+totalYearslyDeposit;
                 totalProfitWithMonthFormat = numberWithCommas((Math.round(totalProfitWithMonth * 100) / 100).toString());
 
             }
