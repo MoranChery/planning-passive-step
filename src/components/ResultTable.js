@@ -14,13 +14,11 @@ return (
 			<td>--</td>
 			<td>{formDataPrint.initialAmount}</td>
 		</tr>
-		{hasMonthlyDepositAmount &&
 		<tr>
 			<td>רווח על הסכום ההתחלתי</td>
 			<td>--</td>
 			<td>{calculation.initProfit}</td>
 		</tr>
-		}
 		<tr>
 			<td>הסכום כולל הרווח אחרי {formData.years} שנים (ללא הפקדה)</td>
 			<td>{formData.profitPercentage}%</td>
@@ -112,6 +110,11 @@ return (
 			<td>{calculation.monthlyAmountAfterAddPercentage}</td>
 		</tr>
 		}
+		<tr className='blocker-up'>
+			<td>הסכום שישאר בחסכון אחרי משיכת הרווח</td>
+			<td>--</td>
+			<td>{calculation.amountLeftInSavings}</td>
+		</tr>
 	</table>
 </div>
 );

@@ -45,6 +45,9 @@ const ResultForm = ({ formData }) => {
             let monthlyAmount = totalAfterTax/(yearsInt*12);
             let monthlyAmountFormat = numberWithCommas((Math.round(monthlyAmount * 100) / 100).toString());
 
+            let amountLeftInSavings = totalWithProfit-partialWithdrawalAmount;
+            let amountLeftInSavingsFormat = numberWithCommas((Math.round(amountLeftInSavings * 100) / 100).toString());
+
             let addPercentageAmountFormat = "";
             let totalAfterAddPercentageFormat = "";
             let monthlyAmountAfterAddPercentageFormat ="";
@@ -107,7 +110,8 @@ const ResultForm = ({ formData }) => {
                 totalYearslyDepositFormat: totalYearslyDepositFormat,
                 depositProfit: depositProfitFormat,
                 totalProfitWithMonth: totalProfitWithMonthFormat,
-                totalProfit: totalProfitFormat
+                totalProfit: totalProfitFormat,
+                amountLeftInSavings: amountLeftInSavingsFormat
             }
         };
 
