@@ -3,20 +3,8 @@
   height: 5vmin;
   animation: colorTransition 10s linear infinite;
   margin-right: 2%;
-}
-
-@keyframes colorTransition {
-  0%  { background-color: #66CCFF; } /* Light Blue */
-  10%  { background-color: #00CC99; } /* Turquoise */
-  20%  { background-color: #00FFCC; } /* Aqua */
-  30%  { background-color: #66FF66; } /* Light Green */
-  40%  { background-color: #009966; } /* Dark Green */
-  50%  { background-color: #003300; } /* Forest Green */
-  60%  { background-color: #009966; } /* Dark Green */
-  70%  { background-color: #66FF66; } /* Light Green */
-  80%  { background-color: #00FFCC; } /* Aqua */
-  90%  { background-color: #00CC99; } /* Turquoise */
-  100%  { background-color: #66CCFF; } /* Light Blue */
+  background-color: white;
+  border: 1px solid white;
 }
 
 
